@@ -27,8 +27,12 @@ class MyArgumentParser(argparse.ArgumentParser):
         super(MyArgumentParser, self).print_help(file=file)
         sys.exit(1)
 
-parser = MyArgumentParser(prog=os.path.basename("$0"))
+parser = MyArgumentParser(prog=os.path.basename("$0"), \
+    argument_default=argparse.SUPPRESS, \
+    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 EOF
+### igxactly:
+# Added more options to provide better help message
 
     # stdin to this function should contain the parser definition
     cat >> "$argparser"
