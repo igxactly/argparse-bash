@@ -46,10 +46,16 @@ for arg in [a for a in dir(args) if not a.startswith('_')]:
     if isinstance(value, list):
         print('{0}=({1});'.format(
             arg.upper(),
-            ' '.join('"{0}"'.format(s) for s in value)))
+            ' '.join('\'{0}\''.format(s) for s in value)))
     else:
-        print('{0}="{1}";'.format(arg.upper(), value))
+        print('{0}=\'{1}\';'.format(arg.upper(), value))
 EOF
+### igxactly:
+# Replaced "(double quote) above to '(single quote)
+#   in if/else statement to prevent variable substitution.
+#
+# You can have variables expended doing like
+#   VAR1=1 VAR2=2 echo $(sh -c "$ARG1")
 
     # Define variables corresponding to the options if the args can be
     # parsed without errors; otherwise, print the text of the error
